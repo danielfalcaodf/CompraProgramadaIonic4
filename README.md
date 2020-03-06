@@ -1,6 +1,5 @@
 # CompraProgramadaIonic4
-### processos pronto: telas, Login com facebook(firebase) 
+### pronto: telas, Login com facebook(firebase) 
 
-### processos falta: api
+### falta: api, banco de dados 
 
-### como instalar:
