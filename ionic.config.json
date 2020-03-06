@@ -1,0 +1,7 @@
+{
+  "name": "CompraProgramadaV4",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

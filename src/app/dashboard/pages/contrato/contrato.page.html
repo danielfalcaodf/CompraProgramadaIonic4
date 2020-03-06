@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/app/planos"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Contrato</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card text-center >
+    <ion-button shape=round (click)="openPdf()">Open pdf</ion-button>
+  
+  
+    </ion-card>
+  
+    <ion-list *ngIf="!checkbox == false">
+        <ion-item *ngFor="let lei of leis">
+          <ion-label style="white-space: normal;">{{lei.text}}</ion-label>
+          <ion-checkbox slot="start" [(ngModel)]="lei.checked" (click)="teste(lei)"></ion-checkbox>
+        </ion-item>
+      </ion-list>
+      <ion-row align-items-center>
+        <ion-col text-center>
+          <ion-button  shape="round" (click)=voltar() >Voltar</ion-button>
+          
+          
+          <ion-button  *ngIf="!checkbox == false"  shape="round"  color="success" [disabled]="btnConfir" (click)="startAlert()">
+            <ion-icon name="checkmark-circle" slot="end" ></ion-icon>
+            Confirmar
+          </ion-button  >
+          
+        </ion-col>
+      </ion-row>
+</ion-content>

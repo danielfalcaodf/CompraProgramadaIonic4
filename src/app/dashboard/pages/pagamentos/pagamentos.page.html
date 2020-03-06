@@ -1,0 +1,99 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <app-menu-toggle slot="start" menu="main-menu"></app-menu-toggle>
+    <ion-title>Pagamentos</ion-title>
+     <ion-buttons slot="end">
+          <ion-button (click)="presentPopover($event)">
+            <ion-icon size="large" slot="end" name="notifications"></ion-icon>
+          </ion-button>
+
+        </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <div *ngFor="let pg of pgagora">
+    <ion-item text-center no-margin no-padding lines="inset" class="ion-no-padding">
+      
+      <ion-row align-items-center style="width: 100%;">
+
+        <ion-col size="7" align-self-center text-center>
+
+          <ion-item text-center no-margin no-padding lines="none">
+            <ion-icon no-margin name="card" slot="start"></ion-icon>
+            <ion-label no-padding>
+              Compra Programada
+              <p>({{pg?.parcelaAtual }} de {{pg?.parcelaFinal}})</p>
+            </ion-label>
+          </ion-item>
+
+        </ion-col>
+        <ion-col size="5" text-center>
+          <ion-label>
+            {{pg?.valorParcela | currency:'R$' }}
+            <p>Venc.{{pg?.dataVecimento}}</p>
+          </ion-label>
+        </ion-col>
+      </ion-row>
+    </ion-item>
+    <ion-button margin-top margin-bottom expand="block" shape="round" fill="outline" (click)="rota('Pagar Agora', pg)">
+      Pagar Agora </ion-button>
+  </div>
+  
+  
+
+ 
+<ion-list margin-top>
+  <ion-list-header color="light" margin-bottom>
+     Últimas faturas
+    </ion-list-header>
+
+    <div *ngFor="let pg of pgStatus" text-center>
+      <ion-item  no-margin no-padding lines="inset"
+        class="ion-no-padding">
+       
+        <ion-row align-items-center style="width: 100%;">
+    
+          <ion-col size="7" align-self-center text-center>
+            <ion-item text-center no-margin lines="none" class="ion-no-padding">
+              <ion-icon [color]="pg.color" [name]="pg.icon" no-margin slot="start"></ion-icon>
+              <ion-label no-padding>
+                Compra Programada
+                <p>({{pg?.parcelaAtual }} de {{pg?.parcelaFinal}})</p>
+                <ion-text [color]="pg.color">
+                  <p><sub>Atrasada {{pg?.atrasso}} dias</sub></p>
+                </ion-text>
+              </ion-label>
+             
+             
+    
+            </ion-item>
+          </ion-col>
+    
+            
+          <ion-col size="5" align-self-center text-center>
+            <ion-label no-padding>
+              {{pg?.valorParcela | currency:'R$' }}
+              <p>Venc.{{pg.dataVecimento}}</p>
+              </ion-label>
+            
+            <!-- <ion-button  shape="round" fill="outline" margin-bottom (click)="rota(pg.btn, pg)">{{pg.btn}}</ion-button> -->
+           
+    
+    
+          </ion-col>
+    
+    
+        </ion-row>
+       
+        
+    
+    
+    
+    
+    
+      </ion-item>
+      <ion-button  size="small" shape="round" fill="outline" margin-bottom (click)="rota(pg.btn, pg)">{{pg.btn}}</ion-button>
+    </div>
+  </ion-list>
+</ion-content>

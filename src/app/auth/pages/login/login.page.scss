@@ -1,0 +1,187 @@
+.opcao{
+
+  margin-top: 50%;
+
+}
+    .content-slider {
+        ion-slides,
+        .swiper-container {
+          height: 100%;
+          width: auto;
+        }
+      }
+      .text-slider {
+        ion-slides,
+        .swiper-container {
+          height: 20vh;
+          width: auto;
+        }
+      }
+    //   // .zoom .slide-zoom {
+    //   //   height: 100%;
+    //   // }
+    //   // Content
+      .scroll-content {
+        // display: flex;
+        // flex-direction: column;
+        // overflow: hidden;
+        padding-bottom: 0px !important;
+      }
+      .logo {
+        width: 100%;
+        max-width: 19em;
+        height: auto;
+        margin: 0 auto;
+      }
+      ion-row {
+        align-items: center;
+        text-align: center;
+      }
+      ion-col {
+        padding: 0 20px;
+        position : initial !important;
+      }
+    
+    //   // Input items
+      ion-item{
+        background-color: transparent !important;
+        padding-left: 0px !important;
+        
+      }
+    
+      .margin-bottom {
+        margin-bottom: 15px !important;
+      }
+    //    ::-webkit-input-placeholder {
+    //     // color: white !important;
+    //   }
+      // .item-inner {
+      //   // border-bottom: 2px solid white !important;
+      //   // box-shadow: none !important;
+      // }
+    //   //
+      .login-button {
+        width: 100%;
+        max-width: 40rem;
+        height: 50px;
+        
+        
+        // border: 1px solid #fff;
+      }
+      .forgot-button {
+        font-weight: bold;
+        float: right;
+        ion-icon {
+          padding-left: 10px;
+          font-size: 2.2rem;
+        }
+      }
+      .goback-button {
+        font-weight: bold;
+        float: left;
+        ion-icon {
+          padding-right: 10px;
+          font-size: 2.2rem;
+        }
+      }
+      .slide-button {
+        margin-top: 4rem;
+        font-weight: bold;
+        ion-icon {
+          padding-left: 10px;
+          font-size: 2.2rem;
+        }
+      }
+    //   .position-bottom {
+    //     position: absolute;
+    //     left: 0;
+    //     bottom: 10px;
+    //     right: 0;
+    //     margin: 0 auto;
+    //     width: 200px;
+    //   }
+     ion-input{
+      position : initial !important;
+     }
+    //  ion-input:focus{
+    //   padding-bottom: 300px !important;
+    //  }
+    
+    .no-padding-top .scroll-content{
+        padding-top: 0 !important;
+    }
+    
+    .floating-buttons {
+      z-index: 1;
+      width: 100%;
+      bottom: 0;
+      position: absolute;
+      margin-bottom: 100px;
+      transition: all .4s linear;
+      // background-color: $base-color-transparent;
+    }
+    // // .floating-buttons button {
+    // //   color: white;
+    // //   min-height: 7vh;
+    // //   text-transform: none;
+    // //   font-size: 1.4em;
+    // //   font-weight: bold;
+    // //   background: rgba(49, 161, 216, 0.67);
+    // // }
+    // // .slide-background {
+    // //   background-size: cover !important;
+    // //   background-position: center;
+    // //   background-repeat: no-repeat;
+    // //   border-color: transparent;
+    // // }
+    // .toolbar-background {
+    //   border-color: transparent;
+    // }
+    // .slide-zoom {
+    //   // background: linear-gradient(transparent, rgba(0, 0, 0, 0.4)) !important;
+    //   height: 100%;
+    // }
+    // .text-wrapper {
+    //   width: 100vw;
+    //   height: 100vh;
+    // }
+    // .slide-text {
+    //   position: relative;
+    //   text-align: center;
+    //   top: 50%;
+    //   transform: translateY(-50%);
+    // }
+    // // .slide-title {
+    // //   color: white;
+    // //   font-weight: bold;
+    // // }
+    // // .slide-image {
+    // //   max-height: 100%;
+    // //   max-width: 100%;
+    // //   margin: 18px 0;
+    // // }
+    // // .last-slide {
+    // //   background-image: url('img/welcome-4.jpg');
+    // // }
+    // b {
+    //   font-weight: 500;
+    // }
+    // p {
+    //   padding: 0 40px;
+    //   font-size: 1em;
+    //   line-height: 1.5;
+    //   // color: #FFF;
+    //   b {
+    //     color: #000000;
+    //   }
+    // }
+
+    ion-toolbar {
+        --background: transparent;
+        --ion-color-base: transparent !important;
+        }
+        .col-no-padding
+        {
+          padding: 0 5px !important;
+
+        }

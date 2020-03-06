@@ -1,0 +1,16 @@
+<!-- <ion-list class="accordion-list">
+  <ion-list-header lines="none" no-padding>
+    <ion-item button [style.background]="headerColor" (click)="toggleAccordion()" class="accordion-header"
+      [class.active]="expanded">
+      <ion-icon slot="start" name="ios-arrow-forward">
+      </ion-icon>
+      {{ title }}
+    </ion-item>
+    <section #accordionContent [style.background]="contentColor" [class.active]="expanded" class="accordion-content">
+      <ng-content></ng-content>
+    </section>
+  </ion-list-header>
+</ion-list> -->
+<div #expandWrapper class='expand-wrapper' [class.collapsed]="!expanded">
+  <ng-content></ng-content>
+</div>

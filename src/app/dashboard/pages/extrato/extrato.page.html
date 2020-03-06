@@ -1,0 +1,137 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <app-menu-toggle slot="start" menu="main-menu"></app-menu-toggle>
+    <ion-title>Extrato</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="presentPopover($event)">
+        <ion-icon size="large" slot="end" name="notifications"></ion-icon>
+      </ion-button>
+
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+  <!-- <app-accordion-list *ngFor="let item of items; let index = index" expandHeight="100px" [expanded]="false">
+
+    <ion-card color="tertiary" padding>
+      <ion-list radio-group>
+        <ion-item *ngFor="let rad of radio">
+          <ion-label>{{rad.text}}</ion-label>
+          <ion-radio [value]="rad.text" [checked]="rad.check" (click)="EscolhaData(rad)" ></ion-radio>
+        </ion-item>
+       
+        <ion-row *ngIf="!dataDisplay == false">
+
+          <ion-col>
+            <ion-item>
+
+              <ion-label position=stacked>Data Inicial</ion-label>
+              <ion-input disabled="true" type="text" name="Data Inicial" (click)="openDatepicker()" [(ngModel)]="today"
+                ng-readonly></ion-input>
+
+            </ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-item>
+
+              <ion-label  position=stacked>Data Final</ion-label>
+
+              <ion-input disabled="true" type="text" name="Data Final" (click)="openDateFinal()" [(ngModel)]="datefinal"
+                ng-readonly></ion-input>
+
+            </ion-item>
+          </ion-col>
+
+        </ion-row>
+      </ion-list>
+    </ion-card>
+  </app-accordion-list>  -->
+  <ion-card color="tertiary" *ngFor="let item of list">
+    <ion-toolbar (click)="expandItem(item)">
+      <ion-icon slot="start" name="ios-arrow-down" padding>
+      </ion-icon>
+      <ion-card-header class="ion-no-padding">
+        <ion-card-title>Periodo de extrado</ion-card-title>
+      
+      </ion-card-header>
+    </ion-toolbar>
+
+
+
+    <ion-card-content class="ion-no-padding">
+
+      <app-accordion-list expandHeight="400px" [expanded]="item.expanded">
+        <ion-list padding>
+          <ion-radio-group>
+            <ion-item *ngFor="let rad of radio">
+              <ion-label>{{rad.text}}</ion-label>
+              <ion-radio [value]="rad.text" [checked]="rad.check" (click)="EscolhaData(rad)"></ion-radio>
+            </ion-item>
+
+            <ion-row *ngIf="!dataDisplay == false">
+
+              <ion-col>
+                <ion-item>
+
+                  <ion-label position=stacked>Data Inicial</ion-label>
+                  <ion-input disabled="true" type="text" name="Data Inicial" (click)="openDatepicker()"
+                    [(ngModel)]="today" ng-readonly></ion-input>
+
+                </ion-item>
+              </ion-col>
+              <ion-col>
+                <ion-item>
+
+                  <ion-label position=stacked>Data Final</ion-label>
+
+                  <ion-input disabled="true" type="text" name="Data Final" (click)="openDateFinal()"
+                    [(ngModel)]="datefinal" ng-readonly></ion-input>
+
+                </ion-item>
+              </ion-col>
+
+            </ion-row>
+          </ion-radio-group>
+        </ion-list>
+      </app-accordion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card color="tertiary">
+    <ion-grid no-padding>
+      <ion-row>
+        <ion-col text-left>
+          <ion-label padding text-left>Descrição</ion-label>
+        </ion-col>
+
+        <ion-col text-right>
+          <ion-label padding>Valor</ion-label>
+        </ion-col>
+      </ion-row>
+      <div>
+        <ion-row *ngFor="let ex of extratoStatus | slice:0:1 ; index as i">
+          <ion-col text-center>
+            <ion-label padding text-center>{{ex.dataPagemento}}</ion-label>
+          </ion-col>
+        </ion-row>
+        <div *ngFor="let ex of extratoStatus">
+          <ion-row class="tb" align-items-center>
+            <ion-col text-center>
+              <ion-icon [name]="ex.icon" [color]="ex.color" item-content lange></ion-icon>
+            </ion-col>
+            <ion-col text-center>
+              <ion-label no-margin> {{ex?.compraText}} <p>({{ex?.parcelaInicial}}/{{ex?.parcelaFinal}})</p>
+              </ion-label>
+            </ion-col>
+            <ion-col text-center>
+              <ion-label no-margin>{{ex?.valorParcela | currency:'R$'}}</ion-label>
+            </ion-col>
+          </ion-row>
+        </div>
+      </div>
+    </ion-grid>
+  </ion-card>
+
+</ion-content>

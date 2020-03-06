@@ -1,0 +1,238 @@
+<ion-header   no-border no-shadow>
+  <ion-toolbar *ngIf="slideIndex < slideList.length - 1">
+    <ion-buttons slot="end">
+      <!-- <button ion-button color="light"
+              *ngIf="slideIndex < slides.length - 1"
+              class="skip-button"
+              (click)="skip()">SKIP</button> -->
+              <ion-button  color="primary" (click)="goToApp()" >Pular</ion-button>
+              
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen="true" class="transparent-header no-padding-top " >
+
+  <ion-slides *ngIf="slidesOpen == true;" #slideOpen pager="true" autoplay="3000" (ionSlideWillChange)="onSlideChanged()">
+    <ion-slide *ngFor="let slide of slideList">
+  
+      <div class="text-wrapper" padding >
+        <div class="slide-zoom">
+          <img class="logo" src="../../assets/img/background/programada.png" />
+       </div>
+        <div >
+          <h2 class="slide-title" [innerHTML]="slide.TituloText"></h2>
+          <p [innerHTML]="slide.Text"></p>
+        </div>
+      </div>
+    </ion-slide>
+   
+  </ion-slides>
+   <div class="floating-buttons pop-in" *ngIf="slideIndex >= slideList.length - 1 && slidesOpen == true ">
+      <ion-button  size="large" expand="full" (click)="goToApp()">Vamos nessa!</ion-button>
+    </div>
+  <ion-slides #slider class="content-slider" *ngIf="slidesOpen == false;">
+ 
+  <ion-slide class="swiper-no-swiping" >
+    <div class="opcao" padding>
+      <img class="logo" src="../../assets/img/background/programada.png" />
+      <ion-row>
+        <ion-col size="6"  class="ion-no-padding col-no-padding" >
+          <ion-button  shape='round' size="small"class="login-button" (click)="goToLogin()">JÁ SOU CLIENTE</ion-button>
+        </ion-col >
+        <ion-col size="6"   class="ion-no-padding col-no-padding">
+          <ion-button shape="round" size="small" class="login-button" (click)="goToSignup()">CRIAR CONTA</ion-button>
+        </ion-col>
+      </ion-row>
+
+    </div>
+  </ion-slide>
+  <ion-slide class=" swiper-no-swiping">
+    <ion-slides #innerSlider class="content-slider">
+      <ion-slide class="swiper-no-swiping">
+        <div style="padding: 32px 32px 32px 32px;">
+          <img class="logo" src="../../assets/img/background/programada.png" />
+          <form [formGroup]="loginForm">
+            <ion-list no-margin>
+              <ion-item>
+                <ion-label position="floating">E-mail</ion-label>
+                <ion-input formControlName="email" type="email"></ion-input>
+              </ion-item>
+              <div class="error_messages">
+                <ng-container *ngFor="let error of error_messages.email">
+                  <div class="error_messages"
+                    *ngIf="loginForm.get('email').hasError(error.type) && (loginForm.get('email').dirty || loginForm.get('email').touched)">
+                    {{error.message}}
+                  </div>
+                </ng-container>
+              </div>
+
+              <ion-item>
+                <ion-label position="floating">Senha</ion-label>
+                <ion-input formControlName="password" type="password"></ion-input>
+              </ion-item>
+              <div class="error_messages">
+                <ng-container *ngFor="let error of error_messages.password">
+                  <div class="error_messages"
+                    *ngIf="loginForm.get('password').hasError(error.type) && (loginForm.get('password').dirty || loginForm.get('password').touched)">
+                    {{error.message}}
+                  </div>
+                </ng-container>
+              </div>
+            </ion-list>
+          </form>
+
+          <ion-button  fill="clear" (click)=" slideNext()">ESQUEÇEU A SENHA?</ion-button>
+          <ion-button  expand="block" [disabled]="loginForm.invalid" (click)="LoginComEmail(authProviders.Email)">Entrar</ion-button>
+          <ion-button  expand="block" fill="outline"  (click)="loginComFB()">
+            <ion-icon slot="start" name="logo-facebook"></ion-icon>
+            LOGIN COM FACEBOOK
+          </ion-button>
+          <ion-label ion-text text-center>
+           OU
+          </ion-label>
+          <ion-button  (click)="goToSignup()" expand="block" fill="outline">CRIAR CONTA</ion-button>
+        </div>
+      </ion-slide>
+      <ion-slide class="swiper-no-swiping">
+        <div style="padding: 20% 32px 32px 32px">
+          <img class="logo" src="../../assets/img/background/programada.png" />
+          <ion-list>
+            <ion-item>
+              <ion-label position="floating">E-mail</ion-label>
+              <ion-input type="email"></ion-input>
+            </ion-item>
+          </ion-list>
+
+          <ion-button expand="block">NOVA SENHA</ion-button>
+          <ion-button fill="clear" (click)="slidePrevious()" class="goback-button">
+            <ion-icon name="arrow-back"></ion-icon> VOLTAR
+          </ion-button>
+        </div>
+      </ion-slide>
+    </ion-slides>
+  </ion-slide>
+  <ion-slide style="overflow: scroll" class=" swiper-no-swiping">
+    <ion-slides #slideCadastro [formGroup]="registerForm" class="content-slider">
+      <ion-slide class="swiper-no-swiping">
+        <div style="padding: 60px 32px 32px 32px;">
+
+          <img class="logo" src="../../assets/img/background/programada.png" />
+
+          <ion-list no-margin>
+
+            <ion-item>
+
+              <ion-label position="floating">E-mail</ion-label>
+              <ion-input formControlName="email" type="email"></ion-input>
+            </ion-item>
+            <div class="error_messages">
+              <ng-container *ngFor="let error of registerError_messages.email">
+                <div class="error_messages"
+                  *ngIf="registerForm.get('email').hasError(error.type) && (registerForm.get('email').dirty || registerForm.get('email').touched)">
+                  {{error.message}}
+                </div>
+              </ng-container>
+            </div>
+            <ion-item>
+              <ion-label position="floating">Senha</ion-label>
+              <ion-input formControlName="password" type="password"></ion-input>
+            </ion-item>
+            <div class="error_messages">
+              <ng-container *ngFor="let error of registerError_messages.password">
+                <div class="error_messages"
+                  *ngIf="registerForm.get('password').hasError(error.type) && (registerForm.get('password').dirty || registerForm.get('password').touched)">
+                  {{error.message}}
+                </div>
+              </ng-container>
+            </div>
+            <ion-item>
+              <ion-label position="floating">Confirmar Senha</ion-label>
+              <ion-input formControlName="confirmPassword" type="password"></ion-input>
+            </ion-item>
+            <div class="error_messages">
+              <ng-container *ngFor="let error of registerError_messages.confirmPassword">
+                <div class="error_messages"
+                  *ngIf="registerForm.get('confirmPassword').hasError(error.type) && (registerForm.get('confirmPassword').dirty || registerForm.get('confirmPassword').touched)">
+                  {{error.message}}
+                </div>
+              </ng-container>
+            </div>
+            <ion-button  icon-right margin-top expand="block" (click)="slideCadastroNext()">
+              CONTINUAR
+              <ion-icon slot="end" name="arrow-forward"></ion-icon>
+            </ion-button>
+            <ion-button expand="block" fill="outline"  (click)="loginComFB()">
+              <ion-icon slot="start" name="logo-facebook"></ion-icon>
+              LOGIN COM FACEBOOK
+            </ion-button>
+            <ion-label ion-text text-center>
+             OU
+            </ion-label>
+            <ion-button  (click)="goToLogin()" expand=block fill=outline>JÁ SOU CLIENTE</ion-button>
+          </ion-list>
+
+
+
+
+        </div>
+      </ion-slide>
+      <ion-slide class="swiper-no-swiping">
+        <div style="padding: 60px 32px 32px 32px;">
+          <img class="logo" src="../../assets/img/background/programada.png" />
+          <ion-list>
+            <ion-item>
+              <ion-label position=floating>Nome Completo</ion-label>
+              <ion-input formControlName="nome" type="text"></ion-input>
+
+            </ion-item>
+            <div class="error_messages">
+
+              <ng-container *ngFor="let error of registerError_messages.nome">
+                <div class="error_messages"
+                  *ngIf="registerForm.get('nome').hasError(error.type) && (registerForm.get('nome').dirty || registerForm.get('nome').touched)">
+                  {{error.message}}
+                </div>
+              </ng-container>
+            </div>
+            <ion-item>
+              <ion-label  position=floating>CPF/CNPJ</ion-label>
+              <ion-input formControlName="cpf" type="text" [brmasker]="{person: true, len:18}"></ion-input>
+              <!-- <ion-input formControlName="cpf" type="text"></ion-input> -->
+            </ion-item>
+            <div class="error_messages">
+              <ng-container *ngFor="let error of registerError_messages.cpf">
+                <div class="error_messages"
+                  *ngIf="registerForm.get('cpf').hasError(error.type) && (registerForm.get('cpf').dirty || registerForm.get('cpf').touched)">
+                  {{error.message}}
+                </div>
+              </ng-container>
+            </div>
+            <ion-item>
+              <ion-label  position=floating>Telefone</ion-label>
+              <ion-input formControlName="tel" type="tel" [brmasker]="{phone: true}"></ion-input>
+              <!-- <ion-input formControlName="tel" type="tel"></ion-input> -->
+            </ion-item>
+            <div class="error_messages">
+
+              <ng-container *ngFor="let error of registerError_messages.tel">
+                <div class="error_messages"
+                  *ngIf="registerForm.get('tel').hasError(error.type) && (registerForm.get('tel').dirty || registerForm.get('tel').touched)">
+                  {{error.message}}
+                </div>
+              </ng-container>
+            </div>
+          </ion-list>
+
+          <ion-button expand=block (click)="cadastrarUsuario(authProviders.Email)" [disabled]="registerForm.invalid">CRIAR CONTA</ion-button>
+          <ion-button fill=clear  (click)="slideCadastroBack()" class="goback-button">
+            <ion-icon slot="start" name="arrow-back"></ion-icon> VOLTAR
+          </ion-button>
+        </div>
+      </ion-slide>
+    </ion-slides>
+  </ion-slide>
+</ion-slides>
+
+
+</ion-content>

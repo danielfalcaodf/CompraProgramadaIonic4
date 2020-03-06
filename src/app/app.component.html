@@ -1,0 +1,31 @@
+<ion-split-pane  contentId="menu-content" when="md">
+  <ion-menu contentId="menu-content" menuId="main-menu" id="menu-material" side="start" type="overlay" >
+    <ion-header>
+      <div class="menu-header" style="background:  url(../assets/img/background/material-design-background.jpg) ; background-size: cover;">
+          <!--material-design-background-->
+          <img class="user-avatar round" src="../../assets/img/avatar/marty-avatar.png"/>
+          <p class="name">{{user?.displayName}}</p>
+          <p class="e-mail">{{user?.email}}</p>
+        </div>
+      </ion-header>
+    <ion-content>
+      <ion-list lines="none">
+       
+        <ion-menu-toggle autoHide="false">
+          
+          <ion-item button *ngFor="let p of pages" [routerLink]="p.url" [routerDirection]="p.direction">
+            <ion-icon slot="start" [name]="p.icon"></ion-icon>
+            <ion-label> {{p.text}}</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+      </ion-list>
+    </ion-content>
+    <ion-footer>
+      <ion-toolbar no-border no-shadow >
+        <app-logout-button expand="full" slot="start" menu="main-menu"></app-logout-button>
+      </ion-toolbar>
+ 
+    </ion-footer>
+  </ion-menu>
+  <ion-router-outlet id="menu-content"></ion-router-outlet>
+</ion-split-pane>

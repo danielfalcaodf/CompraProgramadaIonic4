@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-toolbar  color="primary">
+     <app-menu-toggle slot="start" menu="main-menu"></app-menu-toggle>
+    <ion-title>Planos</ion-title>
+    <ion-buttons slot="end">
+      <ion-button  (click)="presentPopover($event)">
+        <ion-icon size="large"slot="end" name="notifications"></ion-icon>
+      </ion-button>
+  
+    </ion-buttons>
+  
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card color="tertiary" padding *ngFor="let pl of listplanos">
+    <ion-list >
+        <ion-item class="ion-no-padding">
+          <div text-center style="width: 100%;">
+          <ion-row align-items-center>
+            <ion-col text-center>
+              <ion-text  >
+              <h2 no-margin>Valor do crédito</h2>
+            </ion-text>
+              <ion-text  color="primary">
+              <h1 no-margin >{{pl?.valorVista | currency:'R$'}} </h1>
+              </ion-text>
+            </ion-col>
+    
+          </ion-row>
+    
+    
+          <ion-row align-items-center>
+    
+            <ion-col sizeMd=4 sizeLg=5 sizeXl=6 text-center>
+    
+    
+              <ion-badge color="success" shape=round >Parcela:</ion-badge>
+              <ion-text color="primary">
+              <h1 no-margin color="primary">{{pl?.valorParcela | currency:'R$'}}</h1>
+              </ion-text>
+              <p>Por mês</p>
+            </ion-col>
+            <ion-col sizeMd=8  sizeLg=7  sizeXl=6 text-center>
+    
+    
+              <ion-badge color="primary" shape=round>Prazo:</ion-badge>
+              <ion-text color="primary">
+              <h1 no-margin >{{pl?.parcela}}x</h1>
+            </ion-text>
+              <p>Meses</p>
+            </ion-col>
+          </ion-row>
+          </div >
+        </ion-item>
+        <ion-button expand=block shape=round fill=outline (click)="rota(pl)">{{pl?.btn}}</ion-button>
+    
+      </ion-list>
+</ion-card>
+
+</ion-content>

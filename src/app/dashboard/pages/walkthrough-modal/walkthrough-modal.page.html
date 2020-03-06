@@ -1,0 +1,28 @@
+<ion-content fullscreen="true" class="transparent-header ion-no-padding-top " >
+
+
+
+  <ion-slides  #slideOpen pager="true"  (ionSlideWillChange)="onSlideChanged()">
+    <ion-slide *ngFor="let slide of slideList" style="width: 100% !important">
+        
+     
+          
+        
+          <img class="help" [src]="slide.imageUrl" />
+     
+    
+    </ion-slide>
+  </ion-slides>
+  <div class="floating-buttons pop-in" *ngIf="slideIndex < slideList.length - 1" >
+    <ion-button no-margin  size=large expand=full (click)="proximoSlide()" >Entendi</ion-button>
+  </div>
+  <div class="floating-buttons pop-in" *ngIf="slideIndex >= slideList.length - 1" >
+    <ion-button no-margin  size=large expand=full (click)="dismiss()" >Entendi</ion-button>
+  </div>
+  <!-- <ion-slides  pager="ios" >
+    <ion-slide *ngFor="let slide of slideList">
+    <h1>{{slide.text}}</h1>
+    </ion-slide>
+  </ion-slides> -->
+  
+  </ion-content>

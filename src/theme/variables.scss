@@ -1,0 +1,157 @@
+// Ionic Variables and Theming. For more info, please see:
+// http://ionicframework.com/docs/theming/
+
+/** Ionic CSS Variables **/
+
+ion-content {
+  --background: #fafafa url('../assets/img/background/negativado_background.png');
+  --background-size: cover;
+  --background-repeat: no-repeat;
+  --background-attachment: fixed;
+ 
+
+}
+ion-item{
+  --background: transparent !important;
+}
+ion-list{
+  background: transparent !important;
+}
+.logo
+{
+   width: 100px;
+}
+.round {
+    border-radius: 50%;
+  }
+
+#menu-material {
+    .menu-header {
+      padding: 5px 15px;
+      padding-top: 22px;
+     background: url('../assets/img/background/material-design-background.jpg');
+     background-size: cover;
+      color: white;
+      .name {
+        font-weight: 500;
+        margin-bottom: 3px;
+      }
+      .e-mail {
+        margin-top: 0;
+        margin-bottom: 5px;
+      }
+    }
+    .user-avatar {
+      padding: .5em;
+      height: 12vh;
+    }
+    h3,
+    .label
+    {
+      color: #999;
+      font-weight: 400;
+    }
+    ion-icon {
+      color: #777;
+    }
+    .item
+    {
+      background-color: transparent  !important ;
+    }
+  }
+  .error_messages
+  {
+      font-size: 1em;
+      color: red;
+      text-align: center;
+      margin: 5px;
+  }
+  ion-modal.inset-modal {
+    // transparent black background overlay
+    background-color: rgba(0, 0, 0, .5) !important;
+    transition: opacity .25s ease-in-out;
+   
+  }
+
+    @media only screen and (min-height: 768px) and (min-width: 768px)
+  {
+    .modal-wrapper {
+    top: calc(50% - ((100% - 100px)/2)) !important;
+    height: calc(100% - 100px) !important;
+    max-height: 1000px !important;
+
+} 
+  }
+:root {
+  /** primary **/
+  --ion-color-primary: #29367A;
+  --ion-color-primary-rgb: 56, 128, 255;
+  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-contrast-rgb: 255, 255, 255;
+  --ion-color-primary-shade: #30367A;
+  --ion-color-primary-tint: #4c8dff;
+
+  /** secondary **/
+  --ion-color-secondary: #CA2128;
+  --ion-color-secondary-rgb: 12, 209, 232;
+  --ion-color-secondary-contrast: #ffffff;
+  --ion-color-secondary-contrast-rgb: 255, 255, 255;
+  --ion-color-secondary-shade: #0bb8cc;
+  --ion-color-secondary-tint: #24d6ea;
+
+  /** tertiary **/
+  --ion-color-tertiary: #ffffff;
+  --ion-color-tertiary-rgb: 112, 68, 255;
+  --ion-color-tertiary-contrast:  #000000;
+  --ion-color-tertiary-contrast-rgb: 255, 255, 255;
+  --ion-color-tertiary-shade: #633ce0;
+  --ion-color-tertiary-tint: #7e57ff;
+
+  /** success **/
+  --ion-color-success: #10dc60;
+  --ion-color-success-rgb: 16, 220, 96;
+  --ion-color-success-contrast: #ffffff;
+  --ion-color-success-contrast-rgb: 255, 255, 255;
+  --ion-color-success-shade: #0ec254;
+  --ion-color-success-tint: #28e070;
+
+  /** warning **/
+  --ion-color-warning: #ffce00;
+  --ion-color-warning-rgb: 255, 206, 0;
+  --ion-color-warning-contrast: #ffffff;
+  --ion-color-warning-contrast-rgb: 255, 255, 255;
+  --ion-color-warning-shade: #e0b500;
+  --ion-color-warning-tint: #ffd31a;
+
+  /** danger **/
+  --ion-color-danger: #f04141;
+  --ion-color-danger-rgb: 245, 61, 61;
+  --ion-color-danger-contrast: #ffffff;
+  --ion-color-danger-contrast-rgb: 255, 255, 255;
+  --ion-color-danger-shade: #d33939;
+  --ion-color-danger-tint: #f25454;
+
+  /** dark **/
+  --ion-color-dark: #222428;
+  --ion-color-dark-rgb: 34, 34, 34;
+  --ion-color-dark-contrast: #ffffff;
+  --ion-color-dark-contrast-rgb: 255, 255, 255;
+  --ion-color-dark-shade: #1e2023;
+  --ion-color-dark-tint: #383a3e;
+
+  /** medium **/
+  --ion-color-medium: #989aa2;
+  --ion-color-medium-rgb: 152, 154, 162;
+  --ion-color-medium-contrast: #ffffff;
+  --ion-color-medium-contrast-rgb: 255, 255, 255;
+  --ion-color-medium-shade: #86888f;
+  --ion-color-medium-tint: #a2a4ab;
+
+  /** light **/
+  --ion-color-light: #f4f5f8;
+  --ion-color-light-rgb: 244, 244, 244;
+  --ion-color-light-contrast: #000000;
+  --ion-color-light-contrast-rgb: 0, 0, 0;
+  --ion-color-light-shade: #d7d8da;
+  --ion-color-light-tint: #f5f6f9;
+}

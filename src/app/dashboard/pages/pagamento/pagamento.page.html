@@ -1,0 +1,110 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Pagamento</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-row align-items-center>
+    <ion-col text-center>
+      <img class="logo" src="../../assets/img/background/programada.png" />
+    </ion-col>
+  </ion-row>
+  <ion-row align-items-center>
+    <ion-col text-center>
+      <ion-label>
+        <ion-text>
+          <h1 ion-text>Pagamento #00000</h1>
+        </ion-text>
+        <p>Vencimento: {{DadosPG?.dataVecimento}}</p>
+      </ion-label>
+    </ion-col>
+
+  </ion-row>
+  <ion-card color="tertiary">
+
+    <ion-grid no-padding>
+      <ion-row padding align-items-center>
+        <ion-col size="8" text-left>
+          <ion-label text-left>Compra Programada ({{DadosPG?.parcelaAtual}}/{{DadosPG?.parcelaFinal}})</ion-label>
+        </ion-col>
+
+        <ion-col size="4" padding text-right>
+          <ion-label>{{DadosPG?.valorParcela | currency:'R$' }}</ion-label>
+        </ion-col>
+      </ion-row>
+      <div>
+
+        <ion-row padding class="tb" align-items-center>
+
+          <ion-col text-left>
+            <ion-label>
+              Total
+            </ion-label>
+          </ion-col>
+          <ion-col text-right>
+            <ion-label>{{DadosPG?.valorParcela | currency:'R$' }}</ion-label>
+          </ion-col>
+        </ion-row>
+
+      </div>
+    </ion-grid>
+
+  </ion-card>
+
+  <div *ngIf="!btnDisplay == false">
+    <ion-button expand=full (click)="pgCartao()" [disabled]="btnCartao">
+      <ion-icon slot="start" name="card"></ion-icon>
+      Pagar com cartão (Em Breve)
+    </ion-button>
+    <ion-button expand=full (click)="pgBoleto()" [disabled]="btnBoleto">
+      <ion-icon slot="start" name="barcode"></ion-icon>
+      Pagar com Boleto
+    </ion-button>
+  </div>
+
+
+
+  <div text-center class="pgSpinner" *ngIf="!load == false">
+    <ion-spinner></ion-spinner>
+  </div>
+  <ion-card color="tertiary" *ngIf="!cardDisplay == false">
+    <ion-row align-items-center>
+      <ion-col>
+
+        <!-- <ion-list>
+        <ion-item text-center no-lines no-margin color="primary" >
+            <ion-icon name="barcode" no-margin item-start large></ion-icon>
+           Boleto gerado
+        </ion-item>
+      </ion-list> -->
+        <ion-item text-center class="ion-no-padding">
+          <div text-center style="width: 100%;">
+            <ion-icon color="primary" name="barcode" size=large></ion-icon>
+            <ion-text color="primary">
+              <h1 no-margin-top color="primary">Boleto gerado</h1>
+            </ion-text>
+          </div>
+        </ion-item>
+      </ion-col>
+
+    </ion-row>
+    <ion-row>
+      <ion-col text-center>
+        <ion-label>
+
+          <h3 ion-text> Número do boleto:</h3>
+          <ion-text color="primary">
+            <h3>00000000000000000000</h3>
+          </ion-text>
+        </ion-label>
+        <ion-button shape=round fill=outline (click)="CopiarNumero('00000000000000000000')">Copiar numero</ion-button>
+        <ion-button shape=round>Imprimir</ion-button>
+      </ion-col>
+
+    </ion-row>
+  </ion-card>
+</ion-content>

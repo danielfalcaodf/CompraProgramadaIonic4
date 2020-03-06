@@ -1,0 +1,203 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/app/planos/false"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Cadastro Plano</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card  color="tertiary" *ngIf="!displayConfirmar == false " >
+    <img src="https://tonyveiculos.com.br/img/carro-semfoto.png" />
+    <ion-card-content>
+      <ion-card-title>
+        <ion-label text-center>
+          <ion-text color="primary">
+            <h1>Hyundai Elantra</h1>
+          </ion-text>
+
+          <p>R$ 50.000,00</p>
+          <ion-text >
+            <h2>48x <b> R$ 1.575,00</b></h2>
+          </ion-text>
+       
+        </ion-label>
+      </ion-card-title>
+      <ion-button   color="success" shape=round expand=block (click)="confirmar()">
+        <ion-icon slot="start"name="checkmark-circle"></ion-icon>
+        Confirmar Plano
+      </ion-button>
+      <ion-button  shape=round expand=block routerLink="/app/planos" routerDirection="back" >
+        <ion-icon slot="start" name="swap"></ion-icon>
+        Trocar Plano
+      </ion-button>
+
+
+    </ion-card-content>
+  </ion-card>
+  <div class="fundo"  *ngIf="!displayCadastro == false" [formGroup]="PlanoForm">
+    <ion-list>
+      <ion-item>
+        <ion-label position=floating>Nome Completo</ion-label>
+        <ion-input formControlName="nome" type="text"></ion-input>
+      </ion-item>
+      <div class="error_messages">
+
+        <ng-container *ngFor="let error of error_messages.nome">
+          <div class="error_messages"
+            *ngIf="PlanoForm.get('nome').hasError(error.type) && (PlanoForm.get('nome').dirty || PlanoForm.get('nome').touched)">
+            {{error.message}}
+          </div>
+        </ng-container>
+      </div>
+      <ion-item>
+        <ion-label position=floating>CPF/CNPJ</ion-label>
+        <ion-input formControlName="cpf" type="text" [brmasker]="{person: true, len:18}"></ion-input>
+        <!-- <ion-input formControlName="cpf" type="text" ></ion-input> -->
+      </ion-item>
+      <div class="error_messages">
+
+        <ng-container *ngFor="let error of error_messages.cpf">
+          <div class="error_messages"
+            *ngIf="PlanoForm.get('cpf').hasError(error.type) && (PlanoForm.get('cpf').dirty || PlanoForm.get('cpf').touched)">
+            {{error.message}}
+          </div>
+        </ng-container>
+      </div>
+      <ion-item>
+        <ion-label position=floating>RG</ion-label>
+        <ion-input formControlName="numRG" type="text"  [brmasker]="{mask:'00.000.000-0', len:12, type:'num'}"></ion-input>
+        <!-- <ion-input formControlName="numRG" type="text" ></ion-input> -->
+      </ion-item>
+      <div class="error_messages">
+
+        <ng-container *ngFor="let error of error_messages.numRG">
+          <div class="error_messages"
+            *ngIf="PlanoForm.get('numRG').hasError(error.type) && (PlanoForm.get('numRG').dirty || PlanoForm.get('numRG').touched)">
+            {{error.message}}
+          </div>
+        </ng-container>
+      </div>
+      <ion-item>
+        <ion-label position=floating>E-mail</ion-label>
+        <ion-input formControlName="email" type="email"></ion-input>
+      </ion-item>
+      <div class="error_messages">
+
+        <ng-container *ngFor="let error of error_messages.email">
+          <div class="error_messages"
+            *ngIf="PlanoForm.get('email').hasError(error.type) && (PlanoForm.get('email').dirty || PlanoForm.get('email').touched)">
+            {{error.message}}
+          </div>
+        </ng-container>
+      </div>
+      <ion-item>
+        <ion-label position=floating>Telefone</ion-label>
+        <ion-input formControlName="tel" type="tel" [brmasker]="{phone: true}"></ion-input>
+        <!-- <ion-input formControlName="tel" type="tel" ></ion-input> -->
+      </ion-item>
+      <div class="error_messages">
+
+        <ng-container *ngFor="let error of error_messages.tel">
+          <div class="error_messages"
+            *ngIf="PlanoForm.get('tel').hasError(error.type) && (PlanoForm.get('tel').dirty || PlanoForm.get('tel').touched)">
+            {{error.message}}
+          </div>
+        </ng-container>
+      </div>
+      <!-- <ion-item>
+      
+            <ion-label stacked>Data Inicial</ion-label>
+            <ion-input disabled="true" formControlName="data" type="text" name="Data Inicial" (click)="openDatepicker()" [(ngModel)]="today"
+              ng-readonly></ion-input>
+      
+          </ion-item> -->
+  
+      <ion-item>
+        <ion-label position=floating color="primary">Data De Vencimento</ion-label>
+        <ion-select formControlName="data" cancelText="Cancelar" okText="OK">
+          <ion-select-option *ngFor="let data of datas" [value]="data">{{ data }}</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+    </ion-list>
+    <ion-list>
+      <ion-item>
+        <ion-label position=floating>CEP</ion-label>
+        <ion-input type="tel" formControlName="cep" (ngModelChange)="getEndereco($event)" [brmasker]="{mask:'00000-000', len:9,type:'num'}"></ion-input>
+        <!-- <ion-input type="tel" formControlName="cep" (ngModelChange)="getEndereco($event)"></ion-input> -->
+      </ion-item>
+      <div class="error_messages">
+
+        <ng-container *ngFor="let error of error_messages.cep">
+          <div class="error_messages"
+            *ngIf="PlanoForm.get('cep').hasError(error.type) && (PlanoForm.get('cep').dirty || PlanoForm.get('cep').touched)">
+            {{error.message}}
+          </div>
+        </ng-container>
+      </div>
+      <ion-item>
+        <ion-label position=floating>Logradouro</ion-label>
+        <ion-input disabled="true" type="text" formControlName="logradouro"></ion-input>
+      </ion-item>
+      <ion-row>
+        <ion-col size=4>
+          <ion-item>
+            <ion-label position=floating>Número</ion-label>
+            <ion-input type="number" formControlName="num"></ion-input>
+          </ion-item>
+          <div class="error_messages">
+
+            <ng-container *ngFor="let error of error_messages.num">
+              <div class="error_messages"
+                *ngIf="PlanoForm.get('num').hasError(error.type) && (PlanoForm.get('num').dirty || PlanoForm.get('num').touched)">
+                {{error.message}}
+              </div>
+            </ng-container>
+          </div>
+        </ion-col>
+        <ion-col size=8>
+          <ion-item>
+            <ion-label position=floating>Complemento</ion-label>
+            <ion-input type="text" formControlName="complemento"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+
+      <ion-item>
+        <ion-label position=floating>Bairro</ion-label>
+        <ion-input disabled="true" type="text" formControlName="bairro"></ion-input>
+      </ion-item>
+      <ion-row>
+        <ion-col size=8>
+          <ion-item>
+            <ion-label position=floating>Cidade</ion-label>
+            <ion-input disabled="true" type="text" formControlName="cidade"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col size="4">
+          <ion-item>
+            <ion-label position=floating>Estado</ion-label>
+            <ion-input disabled="true" type="text" formControlName="estado"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+
+    </ion-list>
+    <ion-row>
+      <ion-col size=12 text-center>
+        <ion-button  shape=round routerLink="/app/planos" routerDirection="back">Voltar</ion-button>
+        <ion-button   shape=round color="success" [disabled]="PlanoForm.invalid" (click)="contrato()">
+          <ion-icon slot="start"name="checkmark-circle"></ion-icon>
+          Confirmar
+        </ion-button>
+      </ion-col>
+
+    </ion-row>
+
+  </div>
+
+</ion-content>

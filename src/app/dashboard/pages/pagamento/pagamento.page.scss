@@ -1,0 +1,43 @@
+ion-item{
+    padding-left: 0px !important;
+    
+    font-size: 14px !important;
+    --padding-end: 0px;
+    --inner-padding-end: 0px;
+}
+// ion-icon {
+
+//   font-size: 3.2rem;
+// }
+    .logo {
+        width: 100%;
+        max-width: 19em;
+        height: auto;
+        margin: 0 auto;
+      } 
+      .tb{
+        border-bottom: 1px #969696a1 solid;
+       background-color: rgba(0, 0, 0, 0.1);
+      }
+    .item
+    {
+       
+    }
+    .label 
+    {
+      margin: 0px !important;
+    }
+  ion-card{
+    margin: 12px 0px 12px 0px !important;
+    width: 100% !important;
+  }
+  ion-spinner  {
+    width: 80px !important;
+    height: 80px !important;
+  }
+  .pgSpinner
+  {
+    width: 100%;
+    
+  }
+  
